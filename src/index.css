@@ -26,7 +26,7 @@
   --text-secondary: #5a5d66;
   --text-accent: #25283a;
   --bg-card-filter: #f9fcfe;
-  --toggle-active: #b73833;
+  --toggle-active: hsl(3, 77%, 44%);
   --toggle-inactive: #c7c7c7;
   --bg-linear-one: #ebf2fc;
   --bg-linear-two: #ebf2fc;
@@ -47,7 +47,7 @@
   --text-secondary: #c7c7c7;
   --text-accent: #ededed;
   --bg-card-filter: #25283a;
-  --toggle-active: #f26a63;
+  --toggle-active: hsl(3, 71%, 56%);
   --toggle-inactive: #5a5d66;
   --bg-linear-one: #040918;
   --bg-linear-two: #091540;
