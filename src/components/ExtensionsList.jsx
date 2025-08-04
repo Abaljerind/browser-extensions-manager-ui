@@ -4,18 +4,36 @@ import Slider from "./Slider";
 import Attribution from "./Attribution";
 
 const ExtensionsList = () => {
-  const filters = ["All", "Active", "Inactive", "Restore"];
+  const filters = ["All", "Active", "Inactive"];
 
   const [extensions, setExtensions] = useState(data);
-  const [extensionStates, setExtensionStates] = useState(
-    extensions.map((ext) => ext.isActive), // ambil nilai isActive dari state extensions
-  );
+  const [activeFilter, setActiveFilter] = useState("All"); // state untuk menyimpan filter yang aktif
 
-  // handler toggle berdasarkan index yang didapat dari Slider
-  function toggleExtension(index) {
-    setExtensionStates((prev) =>
-      prev.map((state, idx) => (idx === index ? !state : state)),
-    );
+  const filteredExtensions = extensions.filter((ext) => {
+    if (activeFilter === "All") return ext;
+    if (activeFilter === "Active") return ext.isActive;
+    if (activeFilter === "Inactive") return !ext.isActive;
+  });
+
+  function handlerSetActiveFilter(value) {
+    setActiveFilter(value);
+  }
+
+  function handlerStatusExtension(value) {
+    /*
+    1. panggil setExtensions
+    2. cek apakah nilai prevState (value state saat ini) di property isActive value nya berubah?
+    3. kalau berubah, maka cukup ubah value isActive nya aja
+    4. kalau ga berubah, kembalikan data nya
+     */
+
+    setExtensions((prevState) => {
+      return prevState.map((item) => {
+        return item.name === value
+          ? { ...item, isActive: !item.isActive }
+          : item;
+      });
+    });
   }
 
   return (
@@ -26,10 +44,12 @@ const ExtensionsList = () => {
 
         <div className="text-title space-x-2">
           {filters.map((filter, index) => {
+            const isActive = activeFilter === filter;
             return (
               <button
                 key={index + 1}
-                className="bg-card-filter border-toggle-inactive cursor-pointer rounded-full border px-4 py-2"
+                onClick={() => handlerSetActiveFilter(filter)}
+                className={`border-toggle-inactive cursor-pointer rounded-full border px-4 py-2 font-medium ${isActive ? "text-background bg-toggle-active" : "bg-card-filter text-title"}`}
               >
                 {filter}
               </button>
@@ -41,7 +61,8 @@ const ExtensionsList = () => {
 
       {/* content */}
       <section className="grid gap-4">
-        {extensions.map((extension, index) => {
+        {filteredExtensions.map((extension, index) => {
+          const extIsActive = extension.isActive;
           return (
             <article
               className="bg-card-filter space-y-7 rounded-2xl p-4 shadow-sm"
@@ -69,8 +90,8 @@ const ExtensionsList = () => {
                   Remove
                 </button>
                 <Slider
-                  extension={extensionStates[index]}
-                  onToggle={() => toggleExtension(index)}
+                  extension={extIsActive}
+                  onToggle={() => handlerStatusExtension(extension.name)}
                 />
               </footer>
 
