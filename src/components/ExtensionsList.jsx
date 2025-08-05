@@ -36,6 +36,20 @@ const ExtensionsList = () => {
     });
   }
 
+  function deleteExtension(value) {
+    /*
+    1. panggil setExtensions
+    2. cek apakah nilai prevState di extension nya yaitu property extension.name ada atau ngga?
+    3. kembalikan data yang tidak cocok dengan nilai parameter nya
+     */
+
+    setExtensions((prevState) => {
+      return prevState.filter((item) => {
+        return item.name !== value;
+      });
+    });
+  }
+
   return (
     <section className="py-8">
       {/* header */}
@@ -86,6 +100,7 @@ const ExtensionsList = () => {
                 <button
                   className="border-toggle-inactive text-title cursor-pointer rounded-full border px-3 py-1 text-sm font-semibold"
                   aria-label={`Remove ${extension.name}`}
+                  onClick={() => deleteExtension(extension.name)}
                 >
                   Remove
                 </button>
