@@ -53,7 +53,7 @@ const ExtensionsList = () => {
   return (
     <section className="py-8">
       {/* header */}
-      <header className="mb-8 flex flex-col items-center justify-center space-y-3">
+      <header className="mb-8 flex flex-col items-center justify-center space-y-3 md:flex-row md:justify-between">
         <h1 className="text-title text-[32px] font-bold">Extensions List</h1>
 
         <div className="text-title space-x-2">
@@ -74,7 +74,7 @@ const ExtensionsList = () => {
       {/* ./ header */}
 
       {/* content */}
-      <section className="grid gap-4">
+      <section className="grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-4">
         {filteredExtensions.map((extension, index) => {
           const extIsActive = extension.isActive;
           return (
