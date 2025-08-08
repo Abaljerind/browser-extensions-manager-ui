@@ -63,7 +63,7 @@ const ExtensionsList = () => {
               <button
                 key={index + 1}
                 onClick={() => handlerSetActiveFilter(filter)}
-                className={`border-toggle-inactive cursor-pointer rounded-full border px-4 py-2 font-medium ${isActive ? "text-background bg-toggle-active" : "bg-card-filter text-title"}`}
+                className={`border-toggle-inactive cursor-pointer rounded-full border px-4 py-2 font-medium ${isActive ? "text-background bg-toggle-active hover:opacity-100" : "bg-card-filter text-title"} duration-300 hover:opacity-50`}
               >
                 {filter}
               </button>
@@ -98,7 +98,7 @@ const ExtensionsList = () => {
 
               <footer className="flex items-center justify-between">
                 <button
-                  className="border-toggle-inactive text-title cursor-pointer rounded-full border px-3 py-1 text-sm font-semibold"
+                  className="border-toggle-inactive text-title hover:bg-toggle-active hover:text-background cursor-pointer rounded-full border px-3 py-1 text-sm font-semibold duration-300"
                   aria-label={`Remove ${extension.name}`}
                   onClick={() => deleteExtension(extension.name)}
                 >
