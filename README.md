@@ -38,7 +38,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github Repository](https://github.com/Abaljerind/browser-extensions-manager-ui)
-- Live Site URL: [Browser Extensions Manager UI]()
+- Live Site URL: [Browser Extensions Manager UI](https://browser-extensions-manager-ui-jerind.netlify.app/)
 
 ## My process
 
