@@ -52,3 +52,7 @@
   --bg-linear-one: #040918;
   --bg-linear-two: #091540;
 }
+
+.focus-state {
+  @apply focus:outline-toggle-active focus:outline-2 focus:outline-offset-2;
+}
