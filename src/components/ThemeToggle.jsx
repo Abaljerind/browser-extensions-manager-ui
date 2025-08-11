@@ -6,7 +6,7 @@ const ThemeToggle = () => {
   return (
     <div className="flex items-center">
       <button
-        className="bg-icon hover:bg-toggle-inactive cursor-pointer rounded-xl p-3 duration-300"
+        className="focus-state bg-icon hover:bg-toggle-inactive cursor-pointer rounded-xl p-3 duration-300"
         onClick={() => setDarkMode((prevTheme) => !prevTheme)}
       >
         {!darkMode ? (
