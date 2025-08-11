@@ -54,5 +54,5 @@
 }
 
 .focus-state {
-  @apply focus:outline-toggle-active focus:outline-2 focus:outline-offset-2;
+  @apply focus-visible:outline-toggle-active focus-visible:outline-2 focus-visible:outline-offset-2;
 }
